@@ -1,0 +1,2 @@
+# Installed on top of requirements.txt for local development & testing only.
+aiosqlite==0.20.0

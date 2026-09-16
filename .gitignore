@@ -1,0 +1,40 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+*.egg-info/
+*.sqlite
+*.sqlite3
+*.db
+
+# Env / Secrets
+.env
+.env.*
+backend/.env
+backend/.env.*
+!.env.example
+!backend/.env.example
+
+# Node
+node_modules/
+dist/
+.vite/
+
+# Data & DB
+data/uploads/*
+!data/uploads/.gitkeep
+data/faiss_index/*
+!data/faiss_index/.gitkeep
+dev_db.db*
+backend/dev_db.db*
+
+# OS / editor
+.DS_Store
+.vscode/
+.idea/
+
+# Temp / Test artifacts
+temp_pytest_dir/
+backend/temp_pytest_dir/
+

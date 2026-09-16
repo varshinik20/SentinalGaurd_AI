@@ -1,0 +1,52 @@
+# SentinelGuard AI Enterprise Gateway Security Policies
+policies:
+  - name: "BLOCK_CRITICAL_RISK"
+    conditions:
+      risk_level: "CRITICAL"
+    action: "BLOCK"
+    description: "Block any query or response with a Critical hybrid risk score."
+
+  - name: "REWRITE_HIGH_RISK_PII"
+    conditions:
+      risk_level: "HIGH"
+      has_evidence_type: "SENSITIVE_INFORMATION"
+    action: "REWRITE"
+    description: "Sanitize and mask PII for High risk leaks."
+
+  - name: "BLOCK_EXTERNAL_CONFIDENTIAL"
+    conditions:
+      user_role: "EXTERNAL"
+      max_classification: "CONFIDENTIAL"
+    action: "BLOCK"
+    description: "Prevent external users from retrieving confidential information."
+
+  - name: "HUMAN_REVIEW_HIGH_RISK_SIMILARITY"
+    conditions:
+      risk_level: "HIGH"
+      has_evidence_type: "SEMANTIC_SIMILARITY"
+    action: "HUMAN_REVIEW"
+    description: "Route high similarity semantic matches to human review."
+
+  - name: "HUMAN_REVIEW_HIGH_RISK_FACT_LEAKAGE"
+    conditions:
+      risk_level: "HIGH"
+      has_evidence_type: "FACT_LEAKAGE"
+    action: "HUMAN_REVIEW"
+    description: "Route fact leakage disclosures to human security review."
+
+  - name: "HUMAN_REVIEW_HIGH_RISK"
+    conditions:
+      risk_level: "HIGH"
+    action: "HUMAN_REVIEW"
+    description: "Route high risk responses to human security review."
+
+  - name: "WARN_MEDIUM_RISK"
+    conditions:
+      risk_level: "MEDIUM"
+    action: "WARN"
+    description: "Warn user about potential medium risk data sharing."
+
+  - name: "DEFAULT_ALLOW"
+    conditions: {}
+    action: "ALLOW"
+    description: "Allow if no risk thresholds are triggered."
